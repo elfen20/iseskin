@@ -26,7 +26,9 @@ namespace IseSkin
 
         static void Main(string[] args)
         {
-            Trace.Listeners.Add(new ConsoleTraceListener());
+            var listener = new ConsoleTraceListener();
+            listener.Filter = new EventTypeFilter(SourceLevels.Warning);
+            Trace.Listeners.Add(listener);
             new Program().Run();
         }
 
